@@ -13,19 +13,19 @@ const init = async () => {
     DROP TABLE IF EXISTS flavor;
     CREATE TABLE flavor(
     id SERIAL PRIMARY KEY,
-    created_at TIMESTAMP DEFAULT now(),
-    updated_at TIMESTAMP DEFAULT now(),
     name VARCHAR(255) NOT NULL,
-    is_favorite VARCHAR(255) NOT NULL
+    is_favorite VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT now(),
+    updated_at TIMESTAMP DEFAULT now()
     )`;
     await client.query(SQL);
     console.log('tables created');
     SQL = /*SQL*/ `
-    INSERT INTO flavor(is_favorite, name) VALUES('noble', 'mint chocolate chip');
-    INSERT INTO flavor(is_favorite, name) VALUES('ferrin', 'vanilla');
-    INSERT INTO flavor(is_favorite, name) VALUES('soul', 'strawberry');
-    INSERT INTO flavor(is_favorite, name) VALUES('krukid', 'bubblegum');
-    INSERT INTO flavor(is_favorite, name) VALUES('needle', 'birthday cake');
+    INSERT INTO flavor(is_favorite, name) VALUES('mint chocolate chip', 'noble');
+    INSERT INTO flavor(is_favorite, name) VALUES('vanilla', 'ferrin');
+    INSERT INTO flavor(is_favorite, name) VALUES('strawberry', 'soul');
+    INSERT INTO flavor(is_favorite, name) VALUES('bubblegum', 'krukid');
+    INSERT INTO flavor(is_favorite, name) VALUES('birthday cake', 'needle');
     `;
     await client.query(SQL);
     console.log('data seeded');
