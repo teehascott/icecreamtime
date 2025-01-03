@@ -35,7 +35,7 @@ app.use(express.json());
 app.use(require('morgan')('dev'));
 app.post('/api/flavor', async (req, res, next) => {
     try {
-        const SQL = /* SQL */`
+        const SQL = /* SQL */ `
         INSERT INTO flavor(is_favorite, name)
         VALUES($1, $2)
         RETURNING *
@@ -48,7 +48,7 @@ app.post('/api/flavor', async (req, res, next) => {
 });
 app.get('/api/flavor', async (req, res, next) => {
     try {
-        const SQL = /* SQL */`
+        const SQL = /* SQL */ `
         SELECT * from flavor ORDER BY created_at DESC
         `;
         const response = await client.query(SQL,)
@@ -59,7 +59,7 @@ app.get('/api/flavor', async (req, res, next) => {
 });
 app.put('/api/flavor/:id', async (req, res, next) => {
     try {        
-        const SQL = /* SQL */`
+        const SQL = /* SQL */ `
         UPDATE flavor
         SET is_favorite=$1, name=$2, updated_at=now()
         WHERE id = $3
@@ -77,7 +77,7 @@ app.put('/api/flavor/:id', async (req, res, next) => {
 });
 app.delete('/api/flavor/:id', async (req, res, next) => {
     try { 
-        const SQL = /* SQL */`
+        const SQL = /* SQL */ `
         DELETE FROM flavor
         WHERE id = $1
         `;
